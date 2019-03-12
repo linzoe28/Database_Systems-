@@ -5,7 +5,9 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,5 +28,12 @@ public class PersonDB {
     
     public static void addPerson(Person p){
         db.put(p.getName(), p);
+    }
+    public static  void removePerson(String name){
+       db.remove(name);
+    }
+    
+    public static List<Person> getAllPersons(){
+        return  new ArrayList<>(db.values());
     }
 }

@@ -23,14 +23,14 @@
             $(document).ready(function () {
                 var person = {
                     name: "yoyo",
-                    emails: ["qaz@mail.com", "wsx@mail.com"],
+                    emails: ["qaz@mail.com", "wsx@mail.com","123546789"],
                     tel: "1231213",
                     birthYear: 200,
                     birthMonth: 10,
                     birthDay: 28
                 };
                 $.ajax("webapi/person", {
-                    type: "POST",
+                    type: "PUT",
                     contentType: "application/json",
                     data: JSON.stringify(person)
                 });
@@ -41,14 +41,6 @@
         </script>
     </head>
     <body>
-        <form action="webapi/person" method="POST">
-            Name: <input type="text" name="name" value="" /><br/>
-            Email: <input type="email" name="emails" value="" /><br/>
-            Email: <input type="email" name="emails" value="" /><br/>
-            Email: <input type="email" name="emails" value="" /><br/>
-            Email: <input type="email" name="emails" value="" /><br/>
-            Email: <input type="email" name="emails" value="" /><br/>
-            <input type="submit" value="Submit" />
-        </form>
+    
     </body>
 </html>

@@ -7,9 +7,12 @@ package com.mycompany.mavenproject1;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -29,8 +32,9 @@ public class PersonResource {
     }
     
     @POST
-    public void addPerson(@FormParam("name") String name, @FormParam("emails") List<String> emails){
-        Person p=new Person();
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addPerson(Person person/*@FormParam("name") String name, @FormParam("emails") List<String> emails*/){
+       /* Person p=new Person();
         p.setName(name);
         List<String> newList=new ArrayList<>();
         for(String email : emails){
@@ -38,7 +42,20 @@ public class PersonResource {
                 newList.add(email);
             }
         }
-        p.setEmails(newList.toArray(new String[0]));
-        PersonDB.addPerson(p);
+        p.setEmails(newList.toArray(new String[0]));*/
+        PersonDB.addPerson(person);
+    }
+    
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public  void  updatePerson(Person person){
+        PersonDB.removePerson(person.getName());
+        PersonDB.addPerson(person);
+    }
+    
+    @DELETE
+    @Path("{name}")
+    public  void  deletePerson(@PathParam("name") String name){
+       PersonDB.removePerson(name);
     }
 }
